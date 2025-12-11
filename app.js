@@ -54,7 +54,7 @@ async function loadData() {
         // Import database
         const { db: importedDb } = await import('./database.js');
         db = importedDb; // Store globally
-        
+
         // Convert database format to vehicleData format
         vehicleData = [];
         db.forEach(brand => {
@@ -263,7 +263,7 @@ function renderBrands() {
         // Get brand logo from database
         const brandData = db.find(b => b.nombre_marca === marca);
         const logoPath = brandData?.logo || '';
-        
+
         const brandCard = document.createElement('div');
         brandCard.className = 'brand-card';
         brandCard.innerHTML = `
@@ -287,10 +287,10 @@ function renderBrands() {
 
 function renderModels(marca) {
     modelGrid.innerHTML = '';
-    
+
     // Get models directly from database for this brand
     const brandData = db.find(b => b.nombre_marca === marca);
-    
+
     if (!brandData || !brandData.modelos || brandData.modelos.length === 0) {
         modelGrid.innerHTML = '<p style="color: var(--grey-pearl);">No se encontraron modelos para esta marca.</p>';
         return;
@@ -302,13 +302,13 @@ function renderModels(marca) {
     // Use models directly from database
     brandData.modelos.forEach(modelData => {
         const modelImage = modelData.img || '';
-        
+
         const modelCard = document.createElement('div');
         modelCard.className = 'model-card';
 
         const imageContainer = document.createElement('div');
         imageContainer.className = 'model-image-container';
-        
+
         if (modelImage) {
             const img = document.createElement('img');
             img.src = modelImage;
@@ -332,14 +332,14 @@ function renderModels(marca) {
         }
 
         modelCard.appendChild(imageContainer);
-        
+
         const modelInfo = document.createElement('div');
         modelInfo.className = 'model-info';
         modelInfo.innerHTML = `<div class="model-name">${modelData.nombre}</div>`;
         modelCard.appendChild(modelInfo);
 
         modelCard.addEventListener('click', () => {
-            selectedModel = { 
+            selectedModel = {
                 marca: marca,
                 modelo: modelData.nombre,
                 img: modelImage,
@@ -359,14 +359,14 @@ function renderModels(marca) {
 function showYearModal(model) {
     yearModalVehicleInfo.textContent = `${model.marca} ${model.modelo}`;
     yearGrid.innerHTML = '';
-    
+
     // Get available years from database
     const brandData = db.find(b => b.nombre_marca === model.marca);
     const modelData = brandData?.modelos.find(m => m.nombre === model.modelo);
-    const years = modelData && modelData.anios ? 
-        (Array.isArray(modelData.anios) ? modelData.anios : [modelData.anios]) : 
+    const years = modelData && modelData.anios ?
+        (Array.isArray(modelData.anios) ? modelData.anios : [modelData.anios]) :
         [];
-    
+
     if (years.length === 0) {
         yearGrid.innerHTML = '<p style="color: var(--grey-pearl); text-align: center;">No hay años disponibles</p>';
     } else {
@@ -374,10 +374,10 @@ function showYearModal(model) {
             const yearCard = document.createElement('div');
             yearCard.className = 'year-card';
             yearCard.textContent = year;
-            
+
             yearCard.addEventListener('click', () => {
                 selectedYear = year;
-                selectedVehicle = { 
+                selectedVehicle = {
                     marca: model.marca,
                     modelo: model.modelo,
                     anio: year,
@@ -388,11 +388,11 @@ function showYearModal(model) {
                 renderResult(selectedVehicle);
                 showStep(3);
             });
-            
+
             yearGrid.appendChild(yearCard);
         });
     }
-    
+
     yearModal.classList.add('active');
 }
 
@@ -408,7 +408,7 @@ function renderResult(vehicle) {
     // Get battery info from database or from vehicle object
     let battery = vehicle.bateria || {};
     let vehicleImg = vehicle.img;
-    
+
     if (!battery.codigo) {
         const brandData = db.find(b => b.nombre_marca === vehicle.marca);
         const modelData = brandData?.modelos.find(m => m.nombre === vehicle.modelo);
@@ -450,7 +450,7 @@ function renderResult(vehicle) {
                 <img src="${battery.img || 'https://via.placeholder.com/400x300?text=Bateria'}" 
                      alt="Batería ${battery.codigo || ''}" 
                      class="battery-image"
-                     onerror="this.src='https://via.placeholder.com/400x300?text=Bateria'">
+                     onerror="this.onerror=null; this.src='https://bateriasecuador.com/wp-content/uploads/2023/09/42-01-700x700.webp'">
             </div>
             
             <div class="battery-details">

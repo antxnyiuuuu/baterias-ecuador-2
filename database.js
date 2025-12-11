@@ -1,5 +1,29 @@
 // Battery Database - Vehicle Information
-export const db = [
+
+// Función para generar URLs de imágenes de baterías
+function generarImagenesBateria(valorHP, valorFE) {
+  // 1. Prioridad y Fallback
+  let codigoCrudo = valorHP ? valorHP : valorFE;
+
+  // 2. Validación de "Consultar"
+  if (!codigoCrudo || codigoCrudo.trim() === "") {
+    return ['https://bateriasecuador.com/wp-content/uploads/2023/09/42-01-700x700.webp'];
+  }
+
+  // 3. Sanitización (Limpiar "HP" y espacios)
+  // Ejemplo: "NS60 HP" -> "NS60"
+  let codigo = codigoCrudo.toString()
+    .replace(/HP/gi, '') // Quita "HP" o "hp"
+    .trim();             // Quita espacios extra
+
+  // 4. Retornar Array de URLs
+  return [
+    `https://bateriasecuador.com/wp-content/uploads/2023/09/${codigo}-01-700x700.webp`,
+    `https://bateriasecuador.com/wp-content/uploads/2023/09/${codigo}-02-700x700.webp`
+  ];
+}
+
+const rawData = [
   {
     "id_marca": "chevrolet",
     "nombre_marca": "Chevrolet",
@@ -12,7 +36,6 @@ export const db = [
         "bateria": {
           "codigo": "42 / NS60",
           "specs": "12V 45Ah - Poste Izq",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+42+NS60"
         }
       },
       {
@@ -22,7 +45,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       },
       {
@@ -32,7 +54,6 @@ export const db = [
         "bateria": {
           "codigo": "42 / NS40",
           "specs": "12V 40Ah - Poste Izq",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+42+NS40"
         }
       },
       {
@@ -42,7 +63,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -52,7 +72,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -62,7 +81,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       },
       {
@@ -72,7 +90,6 @@ export const db = [
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+48+L3"
         }
       }
     ]
@@ -89,7 +106,6 @@ export const db = [
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der (Hundido)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+48+L3"
         }
       },
       {
@@ -99,7 +115,6 @@ export const db = [
         "bateria": {
           "codigo": "NS40",
           "specs": "12V 35Ah - Poste Izq (Fino)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+NS40"
         }
       },
       {
@@ -109,7 +124,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -119,7 +133,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -129,7 +142,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       },
       {
@@ -139,7 +151,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       }
     ]
@@ -156,7 +167,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -166,7 +176,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -176,7 +185,6 @@ export const db = [
         "bateria": {
           "codigo": "NS60",
           "specs": "12V 50Ah - Poste Izq",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+NS60"
         }
       },
       {
@@ -186,7 +194,6 @@ export const db = [
         "bateria": {
           "codigo": "NS40",
           "specs": "12V 40Ah - Poste Izq",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+NS40"
         }
       },
       {
@@ -196,7 +203,6 @@ export const db = [
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+48+L3"
         }
       },
       {
@@ -206,7 +212,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -216,7 +221,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -226,7 +230,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       },
       {
@@ -236,7 +239,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       },
       {
@@ -246,7 +248,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       },
       {
@@ -256,7 +257,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 100Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       }
     ]
@@ -273,7 +273,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der (Hundido)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -283,7 +282,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -293,7 +291,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -303,7 +300,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       },
       {
@@ -313,7 +309,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       }
     ]
@@ -330,7 +325,6 @@ export const db = [
         "bateria": {
           "codigo": "24 / NS60L",
           "specs": "12V 60Ah - Poste Izq",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+24+NS60L"
         }
       },
       {
@@ -340,7 +334,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 90Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       },
       {
@@ -350,7 +343,6 @@ export const db = [
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+48+L3"
         }
       },
       {
@@ -360,7 +352,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       }
     ]
@@ -377,7 +368,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -387,7 +377,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -397,7 +386,6 @@ export const db = [
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+48+L3"
         }
       },
       {
@@ -407,7 +395,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       }
     ]
@@ -424,7 +411,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -434,7 +420,6 @@ export const db = [
         "bateria": {
           "codigo": "NS40",
           "specs": "12V 40Ah - Poste Izq",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+NS40"
         }
       },
       {
@@ -444,7 +429,6 @@ export const db = [
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+48+L3"
         }
       },
       {
@@ -454,7 +438,6 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       }
     ]
@@ -471,7 +454,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -481,7 +463,6 @@ export const db = [
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+47+L2"
         }
       },
       {
@@ -491,7 +472,6 @@ export const db = [
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+48+L3"
         }
       },
       {
@@ -501,9 +481,33 @@ export const db = [
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
-          "img": "https://via.placeholder.com/400x300?text=Bateria+27+N70"
         }
       }
     ]
   }
 ];
+// Process rawData to generate images and export as db
+export const db = rawData.map(brand => ({
+  ...brand,
+  modelos: brand.modelos.map(model => {
+    // Extract code for image generation
+    // Logic: If code has " / ", take the FIRST part (e.g., "42 / NS60" -> "42")
+    // because the numeric code corresponds to the image filename on the server.
+    let code = model.bateria?.codigo || '';
+    let cleanCode = code;
+    if (code && code.includes(' / ')) {
+      cleanCode = code.split(' / ')[0];
+    }
+
+    // Generate images
+    const images = generarImagenesBateria(cleanCode, null);
+
+    return {
+      ...model,
+      bateria: {
+        ...model.bateria,
+        img: images.length > 0 ? images[0] : model.bateria.img
+      }
+    };
+  })
+}));
