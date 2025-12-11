@@ -1,0 +1,502 @@
+/* ============================================
+   ULTRA-PREMIUM GLASSMORPHISM DESIGN SYSTEM
+   Stealth Luxury Aesthetic
+   ============================================ */
+
+:root {
+    /* Color Palette - Stealth Luxury */
+    --bg-deep-black: #0a0a0a;
+    --bg-anthracite: #141414;
+    --white-pure: #ffffff;
+    --grey-pearl: #888888;
+    --grey-light: rgba(255, 255, 255, 0.08);
+    --grey-lighter: rgba(255, 255, 255, 0.03);
+
+    /* Brand Colors - Minimal Usage */
+    --brand-red: #E31E24;
+    --brand-yellow: #F58220;
+
+    /* Glass Effects */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --glass-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.6);
+
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 64px;
+
+    /* Transitions - Ultra Smooth */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-fast: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: linear-gradient(135deg, var(--bg-deep-black) 0%, var(--bg-anthracite) 100%);
+    color: var(--white-pure);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   APP CONTAINER
+   ============================================ */
+
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    padding-bottom: 120px;
+}
+
+/* ============================================
+   STEP MANAGEMENT
+   ============================================ */
+
+.step {
+    width: 100%;
+    max-width: 1200px;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    transition: var(--transition-smooth);
+    transform: scale(0.95);
+}
+
+.step.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    transform: scale(1);
+}
+
+/* ============================================
+   STEP HEADER
+   ============================================ */
+
+.step-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xxl);
+}
+
+.step-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-sm);
+    color: var(--white-pure);
+}
+
+.step-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    color: var(--grey-pearl);
+}
+
+/* ============================================
+   BRAND GRID (STEP 1)
+   ============================================ */
+
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.brand-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: var(--spacing-xl);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-red), var(--brand-yellow));
+    transition: var(--transition-smooth);
+}
+
+.brand-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.brand-card:hover::before {
+    width: 60%;
+}
+
+.brand-card:active {
+    transform: translateY(-4px);
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white-pure);
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+/* ============================================
+   MODEL GRID (STEP 2)
+   ============================================ */
+
+.model-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.model-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: var(--spacing-md);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--glass-shadow);
+    overflow: hidden;
+}
+
+.model-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.model-card:active {
+    transform: translateY(-4px);
+}
+
+.model-image-container {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-sm);
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.model-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.model-card:hover .model-image {
+    transform: scale(1.05);
+}
+
+.model-info {
+    text-align: center;
+}
+
+.model-name {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--white-pure);
+    margin-bottom: var(--spacing-xs);
+}
+
+.model-year {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--grey-pearl);
+}
+
+/* ============================================
+   RESULT CARD (STEP 3)
+   ============================================ */
+
+.result-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.result-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 32px;
+    box-shadow: var(--glass-shadow-hover);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Left Side - Car Image */
+.result-image-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+.result-image {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Right Side - Battery Info */
+.result-info-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+.result-brand {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--grey-pearl);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--spacing-xs);
+}
+
+.result-model {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 300;
+    color: var(--white-pure);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-xs);
+}
+
+.result-year {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--grey-pearl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.battery-divider {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brand-red), var(--brand-yellow));
+    margin: var(--spacing-md) 0;
+    border-radius: 2px;
+}
+
+.battery-info {
+    margin-top: var(--spacing-sm);
+}
+
+.battery-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--grey-pearl);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-md);
+}
+
+.battery-label i {
+    color: var(--brand-yellow);
+    font-size: 1.1rem;
+}
+
+.battery-code {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--white-pure);
+    letter-spacing: -0.01em;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1;
+}
+
+.battery-specs {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--grey-pearl);
+    line-height: 1.6;
+}
+
+/* ============================================
+   NAVIGATION BUTTONS
+   ============================================ */
+
+.back-button {
+    position: absolute;
+    top: var(--spacing-lg);
+    left: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: var(--white-pure);
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--glass-shadow);
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(-4px);
+}
+
+.back-button:active {
+    transform: translateX(-2px);
+}
+
+.new-search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: var(--white-pure);
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--glass-shadow);
+}
+
+.new-search-button:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--glass-shadow-hover);
+}
+
+.new-search-button:active {
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .result-card {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .brand-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        padding: var(--spacing-md);
+        padding-bottom: 80px;
+    }
+
+    .step-title {
+        font-size: 2rem;
+    }
+
+    .brand-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .model-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .back-button {
+        top: var(--spacing-sm);
+        left: var(--spacing-sm);
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+button:focus-visible,
+.brand-card:focus-visible,
+.model-card:focus-visible {
+    outline: 2px solid var(--brand-red);
+    outline-offset: 4px;
+}

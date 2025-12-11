@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosco de Baterías - Sistema Táctil</title>
+    <meta name="description" content="Sistema inteligente de búsqueda de baterías automotrices">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Step 1: Brand Selection -->
+        <div id="step1" class="step active">
+            <div class="step-header">
+                <h1 class="step-title">Seleccione una Marca</h1>
+                <p class="step-subtitle">Elija la marca de su vehículo</p>
+            </div>
+
+            <div class="brand-grid" id="brandGrid">
+                <!-- Brands will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Step 2: Model Selection -->
+        <div id="step2" class="step">
+            <button class="back-button" id="backToStep1">
+                <i class="fas fa-arrow-left"></i>
+                <span>Atrás</span>
+            </button>
+
+            <div class="step-header">
+                <h1 class="step-title" id="modelStepTitle">Seleccione el Modelo</h1>
+                <p class="step-subtitle" id="modelStepSubtitle">Elija su modelo</p>
+            </div>
+
+            <div class="model-grid" id="modelGrid">
+                <!-- Models will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Step 3: Result Display -->
+        <div id="step3" class="step">
+            <button class="back-button" id="backToStep2">
+                <i class="fas fa-arrow-left"></i>
+                <span>Atrás</span>
+            </button>
+
+            <div class="result-container">
+                <div class="result-card" id="resultCard">
+                    <!-- Result will be dynamically inserted here -->
+                </div>
+
+                <button class="new-search-button" id="newSearchButton">
+                    <i class="fas fa-redo"></i>
+                    <span>Nueva Búsqueda</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
