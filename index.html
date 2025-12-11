@@ -4,19 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiosco de Baterías - Sistema Táctil</title>
+    <title>Kiosco de Baterías - Sistema Inteligente</title>
     <meta name="description" content="Sistema inteligente de búsqueda de baterías automotrices">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SheetJS Library -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen active">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Cargando catálogo...</p>
+        </div>
+    </div>
+
+    <!-- Error Screen -->
+    <div id="errorScreen" class="error-screen">
+        <div class="error-content">
+            <i class="fas fa-exclamation-triangle error-icon"></i>
+            <h2 class="error-title">Error al cargar datos</h2>
+            <p class="error-message" id="errorMessage"></p>
+            <button class="retry-button" id="retryButton">
+                <i class="fas fa-redo"></i>
+                <span>Reintentar</span>
+            </button>
+        </div>
+    </div>
+
     <div class="app-container">
         <!-- Step 1: Brand Selection -->
-        <div id="step1" class="step active">
+        <div id="step1" class="step">
             <div class="step-header">
                 <h1 class="step-title">Seleccione una Marca</h1>
                 <p class="step-subtitle">Elija la marca de su vehículo</p>
