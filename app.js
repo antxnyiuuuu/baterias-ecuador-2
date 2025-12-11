@@ -33,6 +33,7 @@ const modelStepTitle = document.getElementById('modelStepTitle');
 const modelStepSubtitle = document.getElementById('modelStepSubtitle');
 
 const startQuoteButton = document.getElementById('startQuoteButton');
+const backToStep0 = document.getElementById('backToStep0');
 const backToStep1 = document.getElementById('backToStep1');
 const backToStep2 = document.getElementById('backToStep2');
 const newSearchButton = document.getElementById('newSearchButton');
@@ -360,38 +361,41 @@ function showYearModal(model) {
     yearModalVehicleInfo.textContent = `${model.marca} ${model.modelo}`;
     yearGrid.innerHTML = '';
     
-    // Get available years from database
+    // Get model data from database for battery info
     const brandData = db.find(b => b.nombre_marca === model.marca);
     const modelData = brandData?.modelos.find(m => m.nombre === model.modelo);
-    const years = modelData && modelData.anios ? 
-        (Array.isArray(modelData.anios) ? modelData.anios : [modelData.anios]) : 
-        [];
     
-    if (years.length === 0) {
-        yearGrid.innerHTML = '<p style="color: var(--grey-pearl); text-align: center;">No hay años disponibles</p>';
-    } else {
-        years.forEach(year => {
-            const yearCard = document.createElement('div');
-            yearCard.className = 'year-card';
-            yearCard.textContent = year;
-            
-            yearCard.addEventListener('click', () => {
-                selectedYear = year;
-                selectedVehicle = { 
-                    marca: model.marca,
-                    modelo: model.modelo,
-                    anio: year,
-                    img: modelData?.img,
-                    bateria: modelData?.bateria
-                };
-                closeYearModalFunc();
-                renderResult(selectedVehicle);
-                showStep(3);
-            });
-            
-            yearGrid.appendChild(yearCard);
-        });
+    // Generate years from 2000 to current year
+    const currentYear = new Date().getFullYear();
+    const years = [];
+    for (let year = 2000; year <= currentYear; year++) {
+        years.push(String(year));
     }
+    
+    // Reverse to show most recent years first
+    years.reverse();
+    
+    years.forEach(year => {
+        const yearCard = document.createElement('div');
+        yearCard.className = 'year-card';
+        yearCard.textContent = year;
+        
+        yearCard.addEventListener('click', () => {
+            selectedYear = year;
+            selectedVehicle = { 
+                marca: model.marca,
+                modelo: model.modelo,
+                anio: year,
+                img: modelData?.img,
+                bateria: modelData?.bateria
+            };
+            closeYearModalFunc();
+            renderResult(selectedVehicle);
+            showStep(3);
+        });
+        
+        yearGrid.appendChild(yearCard);
+    });
     
     yearModal.classList.add('active');
 }
@@ -490,6 +494,13 @@ startQuoteButton.addEventListener('click', () => {
     showStep(1);
 });
 
+backToStep0.addEventListener('click', () => {
+    showStep(0);
+    selectedBrand = null;
+    selectedModel = null;
+    selectedYear = null;
+});
+
 backToStep1.addEventListener('click', () => {
     showStep(1);
     selectedBrand = null;
@@ -530,7 +541,79 @@ function initializeApp() {
     showStep(0);
 }
 
+// ============================================
+// CAROUSEL FUNCTIONALITY
+// ============================================
+
+let currentSlide = 0;
+const carouselWrapper = document.getElementById('carouselWrapper');
+const carouselSlides = carouselWrapper?.querySelectorAll('.carousel-slide');
+const carouselDots = document.querySelectorAll('.carousel-dot');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+
+function showSlide(index) {
+    if (!carouselSlides || carouselSlides.length === 0) return;
+    
+    currentSlide = index;
+    
+    carouselSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlide);
+    });
+    
+    carouselDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function nextSlide() {
+    if (!carouselSlides || carouselSlides.length === 0) return;
+    currentSlide = (currentSlide + 1) % carouselSlides.length;
+    showSlide(currentSlide);
+}
+
+function prevSlide() {
+    if (!carouselSlides || carouselSlides.length === 0) return;
+    currentSlide = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length;
+    showSlide(currentSlide);
+}
+
+// Carousel event listeners
+if (carouselNext) {
+    carouselNext.addEventListener('click', nextSlide);
+}
+
+if (carouselPrev) {
+    carouselPrev.addEventListener('click', prevSlide);
+}
+
+carouselDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
+});
+
+// Auto-play carousel
+let carouselInterval;
+function startCarousel() {
+    carouselInterval = setInterval(nextSlide, 4000); // Cambia cada 4 segundos
+}
+
+function stopCarousel() {
+    if (carouselInterval) {
+        clearInterval(carouselInterval);
+    }
+}
+
+// Pause on hover
+const carouselContainer = document.querySelector('.carousel-container');
+if (carouselContainer) {
+    carouselContainer.addEventListener('mouseenter', stopCarousel);
+    carouselContainer.addEventListener('mouseleave', startCarousel);
+}
+
 // Start loading data on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
+    if (carouselSlides && carouselSlides.length > 0) {
+        startCarousel();
+    }
 });
