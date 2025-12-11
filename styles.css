@@ -278,13 +278,14 @@ body {
 }
 
 .brand-logo {
-    width: 120px;
+    width: 140px;
     height: auto;
-    max-height: 80px;
+    max-height: 90px;
     object-fit: contain;
-    opacity: 0.7;
+    opacity: 0.9;
     transition: var(--transition-smooth);
-    filter: brightness(0) invert(1);
+    filter: brightness(1) invert(0);
+    margin-bottom: var(--spacing-sm);
 }
 
 .brand-name {
@@ -332,13 +333,15 @@ body {
 
 .model-image-container {
     width: 100%;
-    height: 160px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--spacing-sm);
     overflow: hidden;
     border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    position: relative;
 }
 
 .model-image {
@@ -346,6 +349,7 @@ body {
     height: 100%;
     object-fit: cover;
     transition: var(--transition-smooth);
+    background: rgba(255, 255, 255, 0.01);
 }
 
 .model-card:hover .model-image {

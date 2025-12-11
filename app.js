@@ -260,9 +260,14 @@ function renderBrands() {
     }
 
     brands.forEach(marca => {
+        // Get brand logo from database
+        const brandData = db.find(b => b.nombre_marca === marca);
+        const logoPath = brandData?.logo || '';
+        
         const brandCard = document.createElement('div');
         brandCard.className = 'brand-card';
         brandCard.innerHTML = `
+            ${logoPath ? `<img src="${logoPath}" alt="${marca}" class="brand-logo" onerror="this.style.display='none'">` : ''}
             <div class="brand-name">${marca}</div>
         `;
 
@@ -283,36 +288,64 @@ function renderBrands() {
 function renderModels(marca) {
     modelGrid.innerHTML = '';
     
-    // Get unique models for this brand
-    const models = getModelsByBrand(marca);
-    const uniqueModels = [...new Map(models.map(v => [v.modelo, v])).values()];
-
-    modelStepTitle.textContent = 'Seleccione el Modelo';
-    modelStepSubtitle.textContent = marca;
-
-    if (uniqueModels.length === 0) {
+    // Get models directly from database for this brand
+    const brandData = db.find(b => b.nombre_marca === marca);
+    
+    if (!brandData || !brandData.modelos || brandData.modelos.length === 0) {
         modelGrid.innerHTML = '<p style="color: var(--grey-pearl);">No se encontraron modelos para esta marca.</p>';
         return;
     }
 
-    uniqueModels.forEach(model => {
+    modelStepTitle.textContent = 'Seleccione el Modelo';
+    modelStepSubtitle.textContent = marca;
+
+    // Use models directly from database
+    brandData.modelos.forEach(modelData => {
+        const modelImage = modelData.img || '';
+        
         const modelCard = document.createElement('div');
         modelCard.className = 'model-card';
 
         const imageContainer = document.createElement('div');
         imageContainer.className = 'model-image-container';
-        imageContainer.appendChild(createImageElement(model.marca, model.modelo, `${model.marca} ${model.modelo}`));
+        
+        if (modelImage) {
+            const img = document.createElement('img');
+            img.src = modelImage;
+            img.alt = `${marca} ${modelData.nombre}`;
+            img.className = 'model-image';
+            img.loading = 'lazy';
+            img.onerror = function () {
+                const fallback = document.createElement('div');
+                fallback.className = 'image-fallback';
+                fallback.innerHTML = '<i class="fas fa-car"></i>';
+                if (this.parentNode) {
+                    this.parentNode.replaceChild(fallback, this);
+                }
+            };
+            imageContainer.appendChild(img);
+        } else {
+            const fallback = document.createElement('div');
+            fallback.className = 'image-fallback';
+            fallback.innerHTML = '<i class="fas fa-car"></i>';
+            imageContainer.appendChild(fallback);
+        }
 
         modelCard.appendChild(imageContainer);
-        modelCard.innerHTML += `
-            <div class="model-info">
-                <div class="model-name">${model.modelo}</div>
-            </div>
-        `;
+        
+        const modelInfo = document.createElement('div');
+        modelInfo.className = 'model-info';
+        modelInfo.innerHTML = `<div class="model-name">${modelData.nombre}</div>`;
+        modelCard.appendChild(modelInfo);
 
         modelCard.addEventListener('click', () => {
-            selectedModel = model;
-            showYearModal(model);
+            selectedModel = { 
+                marca: marca,
+                modelo: modelData.nombre,
+                img: modelImage,
+                bateria: modelData.bateria
+            };
+            showYearModal(selectedModel);
         });
 
         modelGrid.appendChild(modelCard);

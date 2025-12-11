@@ -3,12 +3,12 @@ export const db = [
   {
     "id_marca": "chevrolet",
     "nombre_marca": "Chevrolet",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Chevrolet_logo.svg/200px-Chevrolet_logo.svg.png",
+    "logo": "./images/chevrolet.png",
     "modelos": [
       {
         "nombre": "Sail",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/2015_Chevrolet_Sail_1.5_LS_sedan_%28Chile%29.jpg/600px-2015_Chevrolet_Sail_1.5_LS_sedan_%28Chile%29.jpg",
+        "img": "https://www.chevrolet.cl/content/dam/chevrolet/south-america/chile/espanol/index/cars/2025-sail/mov/sail-negro-2000x1000.jpg?imwidth=1200",
         "bateria": {
           "codigo": "42 / NS60",
           "specs": "12V 45Ah - Poste Izq",
@@ -18,7 +18,7 @@ export const db = [
       {
         "nombre": "D-Max",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2018_Isuzu_D-Max_Blade_Automatic_1.9_Front.jpg/600px-2018_Isuzu_D-Max_Blade_Automatic_1.9_Front.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTarkfqZHQYrjzq2XqWqdvHVhResCMFTw4kRA&s",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
@@ -28,7 +28,7 @@ export const db = [
       {
         "nombre": "Spark GT",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/2010_Chevrolet_Spark_%28M300%29_LS_hatchback_%282010-10-16%29_01.jpg/600px-2010_Chevrolet_Spark_%28M300%29_LS_hatchback_%282010-10-16%29_01.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS3K9GjpZD5bvv-uP_qQWnzb8kwu0vzC3XzA&s",
         "bateria": {
           "codigo": "42 / NS40",
           "specs": "12V 40Ah - Poste Izq",
@@ -38,7 +38,7 @@ export const db = [
       {
         "nombre": "Onix",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2019_Chevrolet_Onix_Activ_1.4_%28front%29.jpg/600px-2019_Chevrolet_Onix_Activ_1.4_%28front%29.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMyfMuM-cjfBLfDi2azVnF6W8yO0OXXIN5hw&s",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -48,7 +48,7 @@ export const db = [
       {
         "nombre": "Cruze",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/2016_Chevrolet_Cruze_LTZ_%28front%29.jpg/600px-2016_Chevrolet_Cruze_LTZ_%28front%29.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6GprE7xOBFZjv5t1veijbVjMGWdo9gTFUhw&s",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -58,7 +58,7 @@ export const db = [
       {
         "nombre": "Trailblazer",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/2020_Chevrolet_Trailblazer_LT_%28front%29.jpg/600px-2020_Chevrolet_Trailblazer_LT_%28front%29.jpg",
+        "img": "https://www.assachevrolet.com.ec/content/dam/chevrolet/sa/ec/es/master/index/models/trailblazer/myr-june-2025/2-colorizer/2025-jelly-07.jpg?imwidth=1920",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
@@ -68,7 +68,7 @@ export const db = [
       {
         "nombre": "Equinox",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/2018_Chevrolet_Equinox_LTZ_%28front%29.jpg/600px-2018_Chevrolet_Equinox_LTZ_%28front%29.jpg",
+        "img": "https://di-uploads-pod1.dealerinspire.com/coxchevy/uploads/2017/06/Equinox-Silver-Ice.jpeg",
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
@@ -80,12 +80,12 @@ export const db = [
   {
     "id_marca": "kia",
     "nombre_marca": "Kia",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Kia_Motors_logo.svg/200px-Kia_Motors_logo.svg.png",
+    "logo": "./images/Kia.png",
     "modelos": [
       {
         "nombre": "Sportage R",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/6/62/Kia_Sportage_2.0_CRDi_AWD_Spirit_%28III%2C_Facelift%29_%E2%80%93_Frontansicht%2C_31._Mai_2014%2C_D%C3%BCsseldorf.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8xqNZ3cMp3Qi-K1LqW3u5ESAucep2NF69Mw&s",
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der (Hundido)",
@@ -95,7 +95,7 @@ export const db = [
       {
         "nombre": "Picanto",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/2011_Kia_Picanto_Spice_1.0_Front.jpg/600px-2011_Kia_Picanto_Spice_1.0_Front.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCY7EPtmfpOr-ZmH7HD3M1o83WznR5PIpj-A&s",
         "bateria": {
           "codigo": "NS40",
           "specs": "12V 35Ah - Poste Izq (Fino)",
@@ -105,7 +105,7 @@ export const db = [
       {
         "nombre": "Soluto",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Kia_Soluto_1.4_EX_%28front%29.jpg/600px-Kia_Soluto_1.4_EX_%28front%29.jpg",
+        "img": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/xl/RT_V_610583d7e33c48b99aef93a5b0d5c717.jpg",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -115,7 +115,7 @@ export const db = [
       {
         "nombre": "Rio",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2018_Kia_Rio_%28YB%29_LX_hatchback_%282018-10-11%29_01.jpg/600px-2018_Kia_Rio_%28YB%29_LX_hatchback_%282018-10-11%29_01.jpg",
+        "img": "https://personaliza.kiaecuador.com.ec/api/ImgMvc/VmVrImg?v=157",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -125,7 +125,7 @@ export const db = [
       {
         "nombre": "Sorento",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/2021_Kia_Sorento_%28UM%29_HEV_GT-Line_wagon_%282021-08-11%29_01.jpg/600px-2021_Kia_Sorento_%28UM%29_HEV_GT-Line_wagon_%282021-08-11%29_01.jpg",
+        "img": "https://d1i6h2eptoatah.cloudfront.net/U-684/U-684_1.JPG",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
@@ -135,7 +135,7 @@ export const db = [
       {
         "nombre": "Cerato",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2019_Kia_Cerato_%28YD%29_GT_sedan_%282019-08-22%29_01.jpg/600px-2019_Kia_Cerato_%28YD%29_GT_sedan_%282019-08-22%29_01.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvrxFhYMrqpMyhKiU7ZxN8nNVDV5ssK_Ne7w&s",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -147,12 +147,12 @@ export const db = [
   {
     "id_marca": "toyota",
     "nombre_marca": "Toyota",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Toyota.svg/200px-Toyota.svg.png",
+    "logo": "./images/toyota.jpg",
     "modelos": [
       {
         "nombre": "Corolla",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2020_Toyota_Corolla_Sedan_XSE_%28front%29.jpg/600px-2020_Toyota_Corolla_Sedan_XSE_%28front%29.jpg",
+        "img": "https://d1i6h2eptoatah.cloudfront.net/CF-1038/CF-1038_1.JPG",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -162,7 +162,7 @@ export const db = [
       {
         "nombre": "Camry",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/2018_Toyota_Camry_%28ASV70R%29_Ascent_sedan_%282018-08-27%29_01.jpg/600px-2018_Toyota_Camry_%28ASV70R%29_Ascent_sedan_%282018-08-27%29_01.jpg",
+        "img": "https://media.zigcdn.com/media/model/2024/Dec/toyota-camry_600x400.jpg",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -172,7 +172,7 @@ export const db = [
       {
         "nombre": "Prius",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/2016_Toyota_Prius_%28ZVW50R%29_%28front%29.jpg/600px-2016_Toyota_Prius_%28ZVW50R%29_%28front%29.jpg",
+        "img": "https://www.iihs.org/cdn-cgi/image/width=636/api/ratings/model-year-images/2086/",
         "bateria": {
           "codigo": "NS60",
           "specs": "12V 50Ah - Poste Izq",
@@ -182,7 +182,7 @@ export const db = [
       {
         "nombre": "Yaris",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2018_Toyota_Yaris_%28XP150%29_Ascent_hatchback_%282018-10-11%29_01.jpg/600px-2018_Toyota_Yaris_%28XP150%29_Ascent_hatchback_%282018-10-11%29_01.jpg",
+        "img": "https://www.toyotaperu.com.pe/sites/default/files/360/yaris25_blanco040_00.jpg",
         "bateria": {
           "codigo": "NS40",
           "specs": "12V 40Ah - Poste Izq",
@@ -192,7 +192,7 @@ export const db = [
       {
         "nombre": "RAV4",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2019_Toyota_RAV4_%28XA50%29_GX_wagon_%282019-08-23%29_01.jpg/600px-2019_Toyota_RAV4_%28XA50%29_GX_wagon_%282019-08-23%29_01.jpg",
+        "img": "https://media.ed.edmunds-media.com/toyota/rav4-hybrid/2025/oem/2025_toyota_rav4-hybrid_4dr-suv_se_fq_oem_1_1600.jpg",
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
@@ -202,7 +202,7 @@ export const db = [
       {
         "nombre": "Corolla Cross",
         "anios": ["2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/2022_Toyota_Corolla_Cross_%28MZEA12R%29_GX_wagon_%282022-08-10%29_01.jpg/600px-2022_Toyota_Corolla_Cross_%28MZEA12R%29_GX_wagon_%282022-08-10%29_01.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJLuioU0bs0qx_kj-aKTbuAAX3FyleT-odJQ&s",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -212,7 +212,7 @@ export const db = [
       {
         "nombre": "C-HR",
         "anios": ["2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/2017_Toyota_C-HR_%28NGX10R%29_GX_wagon_%282017-10-26%29_01.jpg/600px-2017_Toyota_C-HR_%28NGX10R%29_GX_wagon_%282017-10-26%29_01.jpg",
+        "img": "https://www.diariomotor.com/imagenes/2019/10/toyota-c-hr-gr-sport-p.jpg?class=XL",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -222,7 +222,7 @@ export const db = [
       {
         "nombre": "Highlander",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2020_Toyota_Highlander_XLE_%28front%29.jpg/600px-2020_Toyota_Highlander_XLE_%28front%29.jpg",
+        "img": "https://media.ed.edmunds-media.com/toyota/grand-highlander/2026/oem/2026_toyota_grand-highlander_4dr-suv_platinum_fq_oem_1_600.jpg",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
@@ -232,7 +232,7 @@ export const db = [
       {
         "nombre": "Hilux",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/2015_Toyota_Hilux_Invincible_D-4D_4WD_3.0_Front.jpg/600px-2015_Toyota_Hilux_Invincible_D-4D_4WD_3.0_Front.jpg",
+        "img": "https://alborautostoyota.com/wp-content/uploads/2025/09/Hilux.jpg",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
@@ -242,7 +242,7 @@ export const db = [
       {
         "nombre": "Fortuner",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/2015_Toyota_Fortuner_%28KUN60R%29_GXL_wagon_%282015-08-07%29_01.jpg/600px-2015_Toyota_Fortuner_%28KUN60R%29_GXL_wagon_%282015-08-07%29_01.jpg",
+        "img": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/s/RT_V_18a61d0d9d96461091778441cb18304b.jpg",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
@@ -252,7 +252,7 @@ export const db = [
       {
         "nombre": "Land Cruiser",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/2015_Toyota_Land_Cruiser_200_%28VDJ200R%29_GX_wagon_%282015-08-07%29_01.jpg/600px-2015_Toyota_Land_Cruiser_200_%28VDJ200R%29_GX_wagon_%282015-08-07%29_01.jpg",
+        "img": "https://kobemotor.es/wp-content/uploads/2025/02/Land-Cruiser-VX-L-Perfil.webp",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 100Ah - Poste Der (Inv)",
@@ -264,12 +264,12 @@ export const db = [
   {
     "id_marca": "hyundai",
     "nombre_marca": "Hyundai",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Hyundai_Motor_Company_logo.svg/200px-Hyundai_Motor_Company_logo.svg.png",
+    "logo": "./images/hyundai.png",
     "modelos": [
       {
         "nombre": "Tucson",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/2016_Hyundai_Tucson_%28TL%29_Active_X_wagon_%282016-01-04%29_01.jpg/600px-2016_Hyundai_Tucson_%28TL%29_Active_X_wagon_%282016-01-04%29_01.jpg",
+        "img": "https://www.hyundai.com.ec/static/media/3.0dd887c3ff075eb61799.webp",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der (Hundido)",
@@ -279,7 +279,7 @@ export const db = [
       {
         "nombre": "Creta",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/2016_Hyundai_Creta_1.6_SX%2B_%28India%29_front_view.jpg/600px-2016_Hyundai_Creta_1.6_SX%2B_%28India%29_front_view.jpg",
+        "img": "https://www.autodato.com/wp-content/uploads/2015/06/Hyundai-Creta-21.jpg.webp",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -289,7 +289,7 @@ export const db = [
       {
         "nombre": "Elantra",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2021_Hyundai_Elantra_N_Line_%28front%29.jpg/600px-2021_Hyundai_Elantra_N_Line_%28front%29.jpg",
+        "img": "https://citymagazine.si/wp-content/uploads/2024/02/2024-Hyundai-Elantra-004.jpg",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -299,7 +299,7 @@ export const db = [
       {
         "nombre": "Santa Fe",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/2019_Hyundai_Santa_Fe_%28TM%29_Highlander_wagon_%282019-08-22%29_01.jpg/600px-2019_Hyundai_Santa_Fe_%28TM%29_Highlander_wagon_%282019-08-22%29_01.jpg",
+        "img": "https://www.univision.com/_next/image?url=https%3A%2F%2Fst1.uvnimg.com%2F30%2F2e%2F756101da440e8ea79235962bf7f1%2Fhyundai-santa-fe-2019-1600-01-1.jpg&w=1280&q=75",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
@@ -309,7 +309,7 @@ export const db = [
       {
         "nombre": "Accent",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2018_Hyundai_Accent_%28HC%29_Active_sedan_%282018-10-11%29_01.jpg/600px-2018_Hyundai_Accent_%28HC%29_Active_sedan_%282018-10-11%29_01.jpg",
+        "img": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_175e8c1593744170b8d3664a6dd69015.webp",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -321,12 +321,12 @@ export const db = [
   {
     "id_marca": "mazda",
     "nombre_marca": "Mazda",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Mazda_logo_%28North_America%29.svg/200px-Mazda_logo_%28North_America%29.svg.png",
+    "logo": "./images/mazda.png",
     "modelos": [
       {
         "nombre": "Mazda 3",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/2014_Mazda3_%28BM%29_SP25_GT_hatchback_%282014-11-20%29_01.jpg/600px-2014_Mazda3_%28BM%29_SP25_GT_hatchback_%282014-11-20%29_01.jpg",
+        "img": "https://cdn.wheel-size.com/thumbs/7f/f2/7ff29b051c83eeb29cb8c09a707bb39b.jpg",
         "bateria": {
           "codigo": "24 / NS60L",
           "specs": "12V 60Ah - Poste Izq",
@@ -336,7 +336,7 @@ export const db = [
       {
         "nombre": "BT-50",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/2012_Mazda_BT-50_%28UP%29_XT_Freestyle_cab_chassis_%282012-10-26%29_01.jpg/600px-2012_Mazda_BT-50_%28UP%29_XT_Freestyle_cab_chassis_%282012-10-26%29_01.jpg",
+        "img": "https://www.maresacenter.com/hubfs/MARESA%20CENTER/Web/Modelos/BT-50/2021-08-18-bt50-ltd-4wd-dc-red-volcano-mc-1.jpg",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 90Ah - Poste Der (Inv)",
@@ -346,7 +346,7 @@ export const db = [
       {
         "nombre": "CX-5",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2021_Mazda_CX-5_%28KF%29_Akera_wagon_%282021-08-11%29_01.jpg/600px-2021_Mazda_CX-5_%28KF%29_Akera_wagon_%282021-08-11%29_01.jpg",
+        "img": "https://acroadtrip.blob.core.windows.net/catalogo-imagenes/xl/RT_V_3eb836d3741b4f24a1641202bd150f4f.webp",
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
@@ -356,7 +356,7 @@ export const db = [
       {
         "nombre": "CX-9",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2019_Mazda_CX-9_%28TC%29_Azami_wagon_%282019-08-22%29_01.jpg/600px-2019_Mazda_CX-9_%28TC%29_Azami_wagon_%282019-08-22%29_01.jpg",
+        "img": "https://noticias.pro.pvt.coches.com/wp-content/uploads/2014/11/CX-9-newspress-2.jpg?force_format=original&w=1575&h=1089",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 85Ah - Poste Der (Inv)",
@@ -368,12 +368,12 @@ export const db = [
   {
     "id_marca": "nissan",
     "nombre_marca": "Nissan",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Nissan_logo.svg/200px-Nissan_logo.svg.png",
+    "logo": "./images/nissan.png",
     "modelos": [
       {
         "nombre": "Sentra",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2020_Nissan_Sentra_SR_%28front%29.jpg/600px-2020_Nissan_Sentra_SR_%28front%29.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbCczcKKZnBWbQsic47S58WKxCWd3j7NQZ3w&s",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -383,7 +383,7 @@ export const db = [
       {
         "nombre": "Versa",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2020_Nissan_Versa_SR_%28front%29.jpg/600px-2020_Nissan_Versa_SR_%28front%29.jpg",
+        "img": "https://res.cloudinary.com/wpchile/image/upload//w_700,f_auto,q_auto:good/kovacsecrm/bms_producto_mutimedia/1474/Layer-06.jpg",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -393,7 +393,7 @@ export const db = [
       {
         "nombre": "X-Trail",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/2019_Nissan_X-Trail_%28T32%29_Ti_wagon_%282019-08-22%29_01.jpg/600px-2019_Nissan_X-Trail_%28T32%29_Ti_wagon_%282019-08-22%29_01.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShV48THvzziYxYju1cGTXZPnK5M7aCaCXaGQ&s",
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
@@ -403,7 +403,7 @@ export const db = [
       {
         "nombre": "Frontier",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2020_Nissan_Frontier_PRO-4X_%28front%29.jpg/600px-2020_Nissan_Frontier_PRO-4X_%28front%29.jpg",
+        "img": "https://www.nissan-cdn.net/content/dam/Nissan/ec/vehicles/frontier21/vehicles/frontier/MY21/VAP/frontier_seta_3_4_24.jpg.ximg.l_12_m.smart.jpg",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
@@ -415,12 +415,12 @@ export const db = [
   {
     "id_marca": "ford",
     "nombre_marca": "Ford",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Ford_logo_flat.svg/200px-Ford_logo_flat.svg.png",
+    "logo": "./images/ford.png",
     "modelos": [
       {
         "nombre": "Focus",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2018_Ford_Focus_Titanium_%28front%29.jpg/600px-2018_Ford_Focus_Titanium_%28front%29.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRfRNcH9FrNqiOPFfxJ-1agmkUc1RpykzCgQ&s",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -430,7 +430,7 @@ export const db = [
       {
         "nombre": "Fiesta",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2019_Ford_Fiesta_ST_%28front%29.jpg/600px-2019_Ford_Fiesta_ST_%28front%29.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUa7UbSQ0Fjx5MGlUvCk-0Q9xbU1stioqt5A&s",
         "bateria": {
           "codigo": "NS40",
           "specs": "12V 40Ah - Poste Izq",
@@ -440,7 +440,7 @@ export const db = [
       {
         "nombre": "Escape",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/2020_Ford_Escape_Titanium_%28front%29.jpg/600px-2020_Ford_Escape_Titanium_%28front%29.jpg",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ6lRErYSLdLkdGEPq-prrTRHVuY1vzmfI8w&s",
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
@@ -450,7 +450,7 @@ export const db = [
       {
         "nombre": "Ranger",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2019_Ford_Ranger_XLT_%28front%29.jpg/600px-2019_Ford_Ranger_XLT_%28front%29.jpg",
+        "img": "https://live.dealer-asset.co/images/br1168/product/paintSwatch/vehicle/ford-peru-ranger-raptor-color-gris-piedra.png?s=1024",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
@@ -462,12 +462,12 @@ export const db = [
   {
     "id_marca": "volkswagen",
     "nombre_marca": "Volkswagen",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Volkswagen_logo_2019.svg/200px-Volkswagen_logo_2019.svg.png",
+    "logo": "./images/Volkswagen.png",
     "modelos": [
       {
         "nombre": "Jetta",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2019_Volkswagen_Jetta_GLI_%28front%29.jpg/600px-2019_Volkswagen_Jetta_GLI_%28front%29.jpg",
+        "img": "https://images.hgmsites.net/lrg/2025-volkswagen-jetta-autobahn-manual-angular-front-exterior-view_100959788_l.webp",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -477,7 +477,7 @@ export const db = [
       {
         "nombre": "Golf",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2019_Volkswagen_Golf_GTI_%28front%29.jpg/600px-2019_Volkswagen_Golf_GTI_%28front%29.jpg",
+        "img": "https://automagazine.ec/wp-content/uploads/2019/10/Volkswagen-Golf-8.png",
         "bateria": {
           "codigo": "47 / L2",
           "specs": "12V 60Ah - Poste Der",
@@ -487,7 +487,7 @@ export const db = [
       {
         "nombre": "Tiguan",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/2020_Volkswagen_Tiguan_R-Line_%28front%29.jpg/600px-2020_Volkswagen_Tiguan_R-Line_%28front%29.jpg",
+        "img": "https://www.autonocion.com/wp-content/uploads/2024/01/Tiguan1-1130x594.jpg",
         "bateria": {
           "codigo": "48 / L3",
           "specs": "12V 70Ah - Poste Der",
@@ -497,7 +497,7 @@ export const db = [
       {
         "nombre": "Amarok",
         "anios": ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2019_Volkswagen_Amarok_Highline_%28front%29.jpg/600px-2019_Volkswagen_Amarok_Highline_%28front%29.jpg",
+        "img": "https://assets.volkswagen.com/is/image/volkswagenag/Highline-4?Zml0PWNyb3AsMSZmbXQ9cG5nJndpZD02NjYmYWxpZ249MC4wMCwwLjAwJmJmYz1vZmYmMGVmNg==",
         "bateria": {
           "codigo": "27 / N70",
           "specs": "12V 80Ah - Poste Der (Inv)",
