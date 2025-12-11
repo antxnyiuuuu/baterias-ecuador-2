@@ -39,6 +39,29 @@
     </div>
 
     <div class="app-container">
+        <!-- Step 0: Landing / Promociones -->
+        <div id="step0" class="step">
+            <div class="landing-container">
+                <div class="promo-banner">
+                    <div class="promo-content">
+                        <h1 class="promo-title">🎄 Promoción Navideña</h1>
+                        <p class="promo-subtitle">Descuentos especiales en baterías para tu vehículo</p>
+                        <div class="promo-badge">Hasta 30% OFF</div>
+                    </div>
+                </div>
+                
+                <div class="landing-content">
+                    <h2 class="landing-title">Baterías Ecuador</h2>
+                    <p class="landing-description">Encuentra la batería perfecta para tu vehículo en segundos</p>
+                    
+                    <button class="cta-button" id="startQuoteButton">
+                        <span>Cotiza la batería para tu vehículo</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Step 1: Brand Selection -->
         <div id="step1" class="step">
             <div class="step-header">
@@ -84,6 +107,27 @@
                     <i class="fas fa-redo"></i>
                     <span>Nueva Búsqueda</span>
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Year Selection Modal -->
+    <div id="yearModal" class="year-modal">
+        <div class="year-modal-overlay"></div>
+        <div class="year-modal-content">
+            <div class="year-modal-header">
+                <h3 class="year-modal-title">Selecciona el Año</h3>
+                <button class="year-modal-close" id="closeYearModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="year-modal-body">
+                <div class="year-selection-info">
+                    <p id="yearModalVehicleInfo"></p>
+                </div>
+                <div class="year-grid" id="yearGrid">
+                    <!-- Years will be dynamically inserted here -->
+                </div>
             </div>
         </div>
     </div>

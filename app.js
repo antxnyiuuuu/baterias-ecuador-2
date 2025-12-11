@@ -4,8 +4,11 @@
 
 let vehicleData = [];
 let batteryData = [];
-let currentStep = 1;
+let db = []; // Global database reference
+let currentStep = 0;
 let selectedBrand = null;
+let selectedModel = null;
+let selectedYear = null;
 let selectedVehicle = null;
 
 // ============================================
@@ -17,6 +20,7 @@ const errorScreen = document.getElementById('errorScreen');
 const errorMessage = document.getElementById('errorMessage');
 const retryButton = document.getElementById('retryButton');
 
+const step0 = document.getElementById('step0');
 const step1 = document.getElementById('step1');
 const step2 = document.getElementById('step2');
 const step3 = document.getElementById('step3');
@@ -28,68 +32,53 @@ const resultCard = document.getElementById('resultCard');
 const modelStepTitle = document.getElementById('modelStepTitle');
 const modelStepSubtitle = document.getElementById('modelStepSubtitle');
 
+const startQuoteButton = document.getElementById('startQuoteButton');
 const backToStep1 = document.getElementById('backToStep1');
 const backToStep2 = document.getElementById('backToStep2');
 const newSearchButton = document.getElementById('newSearchButton');
 
+// Year Modal Elements
+const yearModal = document.getElementById('yearModal');
+const yearGrid = document.getElementById('yearGrid');
+const yearModalVehicleInfo = document.getElementById('yearModalVehicleInfo');
+const closeYearModal = document.getElementById('closeYearModal');
+
 // ============================================
-// EXCEL LOADING & PARSING
+// DATA LOADING (Using database.js)
 // ============================================
 
-async function loadExcelFile() {
+async function loadData() {
     try {
         showLoading(true);
 
-        const response = await fetch('./data/catalogo.xlsx');
-        if (!response.ok) {
-            throw new Error('No se pudo cargar el archivo catalogo.xlsx. Verifica que exista en ./data/');
-        }
-
-        const arrayBuffer = await response.arrayBuffer();
-        const workbook = XLSX.read(arrayBuffer, { type: 'array' });
-
-        // Read first sheet (vehicles)
-        const vehicleSheet = workbook.Sheets[workbook.SheetNames[0]];
-        const rawVehicleData = XLSX.utils.sheet_to_json(vehicleSheet);
-
-        // DEBUG: Mostrar columnas encontradas
-        if (rawVehicleData.length > 0) {
-            console.log('🔍 DEBUG - Columnas en Excel:', Object.keys(rawVehicleData[0]));
-            console.log('🔍 DEBUG - Primera fila:', rawVehicleData[0]);
-        }
-
-        // Read second sheet (batteries) - opcional
-        let rawBatteryData = [];
-        if (workbook.SheetNames.length > 1) {
-            const batterySheet = workbook.Sheets[workbook.SheetNames[1]];
-            rawBatteryData = XLSX.utils.sheet_to_json(batterySheet);
-        }
-
-        // Normalize data
-        vehicleData = rawVehicleData.map(normalizeVehicleRow).filter(auto => {
-            const bateria = auto.codigo_bateria;
-            return bateria && bateria.toString().trim().length > 0 && bateria.toString().trim().toLowerCase() !== "n/a";
+        // Import database
+        const { db: importedDb } = await import('./database.js');
+        db = importedDb; // Store globally
+        
+        // Convert database format to vehicleData format
+        vehicleData = [];
+        db.forEach(brand => {
+            brand.modelos.forEach(model => {
+                const years = Array.isArray(model.anios) ? model.anios : [model.anios];
+                years.forEach(year => {
+                    vehicleData.push({
+                        marca: brand.nombre_marca,
+                        modelo: model.nombre,
+                        anios: year,
+                        codigo_bateria: model.bateria?.codigo || '',
+                        img: model.img,
+                        bateria: model.bateria
+                    });
+                });
+            });
         });
-        batteryData = rawBatteryData.map(normalizeBatteryRow);
 
-        const totalLeidos = rawVehicleData.length;
-        const disponibles = vehicleData.length;
-        const descartados = totalLeidos - disponibles;
-
-        if (vehicleData.length > 0) {
-            console.log('🔍 DEBUG - Primer vehículo normalizado:', vehicleData[0]);
-        } else {
-            console.warn('⚠️ ADVERTENCIA: No hay vehículos después del filtro. Todas las filas fueron descartadas.');
-        }
-
-        console.log(`📊 Total autos leídos: ${totalLeidos}. Autos descartados por falta de batería: ${descartados}. Total disponibles: ${disponibles}.`);
-        console.log('✅ Datos cargados:', { vehicleData, batteryData });
-
+        console.log('✅ Datos cargados desde database.js:', vehicleData.length, 'vehículos');
         showLoading(false);
         initializeApp();
 
     } catch (error) {
-        console.error('❌ Error cargando Excel:', error);
+        console.error('❌ Error cargando datos:', error);
         showError(error.message);
     }
 }
@@ -213,12 +202,14 @@ function hideError() {
 }
 
 function showStep(stepNumber) {
+    step0.classList.remove('active');
     step1.classList.remove('active');
     step2.classList.remove('active');
     step3.classList.remove('active');
 
     setTimeout(() => {
-        if (stepNumber === 1) step1.classList.add('active');
+        if (stepNumber === 0) step0.classList.add('active');
+        else if (stepNumber === 1) step1.classList.add('active');
         else if (stepNumber === 2) step2.classList.add('active');
         else if (stepNumber === 3) step3.classList.add('active');
     }, 100);
@@ -291,36 +282,37 @@ function renderBrands() {
 
 function renderModels(marca) {
     modelGrid.innerHTML = '';
+    
+    // Get unique models for this brand
     const models = getModelsByBrand(marca);
+    const uniqueModels = [...new Map(models.map(v => [v.modelo, v])).values()];
 
     modelStepTitle.textContent = 'Seleccione el Modelo';
     modelStepSubtitle.textContent = marca;
 
-    if (models.length === 0) {
+    if (uniqueModels.length === 0) {
         modelGrid.innerHTML = '<p style="color: var(--grey-pearl);">No se encontraron modelos para esta marca.</p>';
         return;
     }
 
-    models.forEach(vehicle => {
+    uniqueModels.forEach(model => {
         const modelCard = document.createElement('div');
         modelCard.className = 'model-card';
 
         const imageContainer = document.createElement('div');
         imageContainer.className = 'model-image-container';
-        imageContainer.appendChild(createImageElement(vehicle.marca, vehicle.modelo, `${vehicle.marca} ${vehicle.modelo}`));
+        imageContainer.appendChild(createImageElement(model.marca, model.modelo, `${model.marca} ${model.modelo}`));
 
         modelCard.appendChild(imageContainer);
         modelCard.innerHTML += `
             <div class="model-info">
-                <div class="model-name">${vehicle.modelo}</div>
-                <div class="model-year">${vehicle.anios || 'N/A'}</div>
+                <div class="model-name">${model.modelo}</div>
             </div>
         `;
 
         modelCard.addEventListener('click', () => {
-            selectedVehicle = vehicle;
-            renderResult(vehicle);
-            showStep(3);
+            selectedModel = model;
+            showYearModal(model);
         });
 
         modelGrid.appendChild(modelCard);
@@ -328,43 +320,121 @@ function renderModels(marca) {
 }
 
 // ============================================
+// YEAR SELECTION MODAL
+// ============================================
+
+function showYearModal(model) {
+    yearModalVehicleInfo.textContent = `${model.marca} ${model.modelo}`;
+    yearGrid.innerHTML = '';
+    
+    // Get available years from database
+    const brandData = db.find(b => b.nombre_marca === model.marca);
+    const modelData = brandData?.modelos.find(m => m.nombre === model.modelo);
+    const years = modelData && modelData.anios ? 
+        (Array.isArray(modelData.anios) ? modelData.anios : [modelData.anios]) : 
+        [];
+    
+    if (years.length === 0) {
+        yearGrid.innerHTML = '<p style="color: var(--grey-pearl); text-align: center;">No hay años disponibles</p>';
+    } else {
+        years.forEach(year => {
+            const yearCard = document.createElement('div');
+            yearCard.className = 'year-card';
+            yearCard.textContent = year;
+            
+            yearCard.addEventListener('click', () => {
+                selectedYear = year;
+                selectedVehicle = { 
+                    marca: model.marca,
+                    modelo: model.modelo,
+                    anio: year,
+                    img: modelData?.img,
+                    bateria: modelData?.bateria
+                };
+                closeYearModalFunc();
+                renderResult(selectedVehicle);
+                showStep(3);
+            });
+            
+            yearGrid.appendChild(yearCard);
+        });
+    }
+    
+    yearModal.classList.add('active');
+}
+
+function closeYearModalFunc() {
+    yearModal.classList.remove('active');
+}
+
+// ============================================
 // STEP 3: RESULT DISPLAY
 // ============================================
 
 function renderResult(vehicle) {
-    const batterySpecs = getBatterySpecs(vehicle.codigo_bateria);
+    // Get battery info from database or from vehicle object
+    let battery = vehicle.bateria || {};
+    let vehicleImg = vehicle.img;
+    
+    if (!battery.codigo) {
+        const brandData = db.find(b => b.nombre_marca === vehicle.marca);
+        const modelData = brandData?.modelos.find(m => m.nombre === vehicle.modelo);
+        if (modelData) {
+            battery = modelData.bateria || {};
+            vehicleImg = modelData.img || vehicleImg;
+        }
+    }
 
-    const specsText = batterySpecs
-        ? `${batterySpecs.voltaje || '12V'} ${batterySpecs.amperaje || ''} - ${batterySpecs.polaridad || ''}`
-        : 'Especificaciones no disponibles';
+    // Create vehicle image element
+    let vehicleImageHTML = '';
+    if (vehicleImg) {
+        vehicleImageHTML = `<img src="${vehicleImg}" alt="${vehicle.marca} ${vehicle.modelo}" class="result-vehicle-img">`;
+    } else {
+        const imgElement = createImageElement(vehicle.marca, vehicle.modelo, `${vehicle.marca} ${vehicle.modelo}`);
+        imgElement.className = 'result-vehicle-img';
+        vehicleImageHTML = imgElement.outerHTML;
+    }
 
     resultCard.innerHTML = `
-        <div class="result-image-section">
-            ${createImageElement(vehicle.marca, vehicle.modelo, `${vehicle.marca} ${vehicle.modelo}`).outerHTML}
+        <div class="result-vehicle-section">
+            <div class="result-vehicle-image">
+                ${vehicleImageHTML}
+            </div>
+            <div class="result-vehicle-info">
+                <div class="result-brand">${vehicle.marca}</div>
+                <h2 class="result-model">${vehicle.modelo}</h2>
+                <div class="result-year">Año: ${vehicle.anio || vehicle.anios || 'N/A'}</div>
+            </div>
         </div>
         
-        <div class="result-info-section">
-            <div class="result-brand">${vehicle.marca}</div>
-            <h2 class="result-model">${vehicle.modelo}</h2>
-            <div class="result-year">${vehicle.anios || 'N/A'}</div>
+        <div class="result-battery-section">
+            <div class="battery-header">
+                <i class="fas fa-car-battery"></i>
+                <h3>Batería Recomendada</h3>
+            </div>
             
-            <div class="battery-divider"></div>
+            <div class="battery-image-container">
+                <img src="${battery.img || 'https://via.placeholder.com/400x300?text=Bateria'}" 
+                     alt="Batería ${battery.codigo || ''}" 
+                     class="battery-image"
+                     onerror="this.src='https://via.placeholder.com/400x300?text=Bateria'">
+            </div>
             
-            <div class="battery-info">
-                <div class="battery-label">
-                    <i class="fas fa-car-battery"></i>
-                    <span>Batería Recomendada</span>
+            <div class="battery-details">
+                <div class="battery-code-display">${battery.codigo || 'N/A'}</div>
+                <div class="battery-specs-display">
+                    <div class="spec-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>${battery.specs || 'Especificaciones no disponibles'}</span>
+                    </div>
                 </div>
-                <div class="battery-code">${vehicle.codigo_bateria || 'N/A'}</div>
-                <div class="battery-specs">${specsText}</div>
             </div>
         </div>
     `;
 
-    // Re-apply image error handling to result image
-    const resultImage = resultCard.querySelector('.model-image');
+    // Re-apply image error handling
+    const resultImage = resultCard.querySelector('.result-vehicle-img');
     if (resultImage) {
-        resultImage.className = 'result-image';
         resultImage.onerror = function () {
             const fallback = document.createElement('div');
             fallback.className = 'image-fallback';
@@ -380,24 +450,43 @@ function renderResult(vehicle) {
 
 retryButton.addEventListener('click', () => {
     hideError();
-    loadExcelFile();
+    loadData();
+});
+
+startQuoteButton.addEventListener('click', () => {
+    showStep(1);
 });
 
 backToStep1.addEventListener('click', () => {
     showStep(1);
     selectedBrand = null;
+    selectedModel = null;
 });
 
 backToStep2.addEventListener('click', () => {
     showStep(2);
-    selectedVehicle = null;
+    selectedModel = null;
+    selectedYear = null;
 });
 
 newSearchButton.addEventListener('click', () => {
     selectedBrand = null;
+    selectedModel = null;
+    selectedYear = null;
     selectedVehicle = null;
-    showStep(1);
+    showStep(0);
 });
+
+// Year Modal Events
+if (closeYearModal) {
+    closeYearModal.addEventListener('click', closeYearModalFunc);
+}
+if (yearModal) {
+    const overlay = yearModal.querySelector('.year-modal-overlay');
+    if (overlay) {
+        overlay.addEventListener('click', closeYearModalFunc);
+    }
+}
 
 // ============================================
 // INITIALIZATION
@@ -405,10 +494,10 @@ newSearchButton.addEventListener('click', () => {
 
 function initializeApp() {
     renderBrands();
-    showStep(1);
+    showStep(0);
 }
 
-// Start loading Excel on page load
+// Start loading data on page load
 document.addEventListener('DOMContentLoaded', () => {
-    loadExcelFile();
+    loadData();
 });

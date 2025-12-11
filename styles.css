@@ -639,3 +639,511 @@ button:focus-visible,
     outline: 2px solid var(--brand-red);
     outline-offset: 4px;
 }
+
+/* ============================================
+   LANDING PAGE (STEP 0)
+   ============================================ */
+
+.landing-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.promo-banner {
+    background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-yellow) 100%);
+    border-radius: 32px;
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+    box-shadow: var(--glass-shadow-hover);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.promo-content {
+    color: var(--white-pure);
+}
+
+.promo-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
+}
+
+.promo-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    opacity: 0.95;
+    margin-bottom: var(--spacing-md);
+}
+
+.promo-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 24px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.landing-content {
+    padding: var(--spacing-xl) 0;
+}
+
+.landing-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--white-pure);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: -0.03em;
+}
+
+.landing-description {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--grey-pearl);
+    margin-bottom: var(--spacing-xxl);
+    font-weight: 400;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg) var(--spacing-xxl);
+    border-radius: 32px;
+    border: none;
+    background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-yellow) 100%);
+    color: var(--white-pure);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 8px 32px rgba(227, 30, 36, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(227, 30, 36, 0.6);
+}
+
+.cta-button:active {
+    transform: translateY(-2px);
+}
+
+.cta-button i {
+    transition: var(--transition-fast);
+}
+
+.cta-button:hover i {
+    transform: translateX(4px);
+}
+
+/* ============================================
+   YEAR SELECTION MODAL
+   ============================================ */
+
+.year-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-smooth);
+}
+
+.year-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.year-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.year-modal-content {
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 32px;
+    padding: 0;
+    max-width: 800px;
+    width: 90%;
+    max-height: 85vh;
+    overflow: hidden;
+    box-shadow: var(--glass-shadow-hover);
+    transform: scale(0.9) translateY(20px);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.year-modal.active .year-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.year-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--glass-border);
+    background: linear-gradient(135deg, rgba(227, 30, 36, 0.1) 0%, rgba(245, 130, 32, 0.1) 100%);
+}
+
+.year-modal-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 300;
+    color: var(--white-pure);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.year-modal-title::before {
+    content: '📅';
+    font-size: 1.5rem;
+}
+
+.year-modal-close {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-pure);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    font-size: 1.1rem;
+}
+
+.year-modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg) scale(1.1);
+}
+
+.year-modal-body {
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+    flex: 1;
+}
+
+.year-selection-info {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+}
+
+.year-selection-info p {
+    color: var(--white-pure);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.year-selection-info p::before {
+    content: '🚗 ';
+    margin-right: var(--spacing-xs);
+}
+
+.year-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+}
+
+.year-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--white-pure);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.year-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.year-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--brand-red), var(--brand-yellow));
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+}
+
+.year-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, rgba(227, 30, 36, 0.15) 0%, rgba(245, 130, 32, 0.15) 100%);
+    box-shadow: 0 8px 32px rgba(227, 30, 36, 0.3);
+}
+
+.year-card:hover::before {
+    left: 100%;
+}
+
+.year-card:hover::after {
+    width: 70%;
+}
+
+.year-card:active {
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* Scrollbar styling for year modal */
+.year-modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.year-modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+}
+
+.year-modal-body::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--brand-red), var(--brand-yellow));
+    border-radius: 10px;
+}
+
+.year-modal-body::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--brand-yellow), var(--brand-red));
+}
+
+/* ============================================
+   IMPROVED RESULT DISPLAY
+   ============================================ */
+
+.result-card {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.result-vehicle-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.result-vehicle-image {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.result-vehicle-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.result-vehicle-info {
+    text-align: center;
+}
+
+.result-battery-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+}
+
+.battery-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.battery-header i {
+    font-size: 2rem;
+    color: var(--brand-yellow);
+}
+
+.battery-header h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--white-pure);
+    letter-spacing: -0.02em;
+}
+
+.battery-image-container {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+}
+
+.battery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: var(--spacing-md);
+}
+
+.battery-details {
+    text-align: center;
+}
+
+.battery-code-display {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--white-pure);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-md);
+}
+
+.battery-specs-display {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    color: var(--grey-pearl);
+    font-size: 1.1rem;
+}
+
+.spec-item i {
+    color: var(--brand-yellow);
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .result-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .year-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    .year-card {
+        padding: var(--spacing-md);
+        font-size: 1.1rem;
+        min-height: 70px;
+    }
+    
+    .year-modal-content {
+        max-width: 95%;
+        max-height: 90vh;
+    }
+    
+    .year-modal-header {
+        padding: var(--spacing-lg);
+    }
+    
+    .year-modal-body {
+        padding: var(--spacing-lg);
+    }
+    
+    .promo-banner {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .year-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .year-card {
+        padding: var(--spacing-sm) var(--spacing-xs);
+        font-size: 1rem;
+        min-height: 60px;
+    }
+}
